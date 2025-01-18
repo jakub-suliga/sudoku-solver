@@ -1,12 +1,7 @@
 
 class Soduko_Solver:
     def __init__(self, board):
-        if not self.is_valid_board(board):
-            return None
         self.board = board
-        
-    def is_valid_board(self, board):
-        return True
     
     def solve(self):
         return self.board
