@@ -17,13 +17,15 @@ class Soduko_Solver:
                     return False
                 
                 
-    def check_valid_in_row():
-        return NotImplementedError
+    def check_valid_in_row(self, row, num):
+        for i in range(self.size):
+            if self.board[row][i] == num:
+                return False
     
-    def check_valid_in_colum():
+    def check_valid_in_colum(self, col, num):
         return NotImplementedError
 
-    def check_valid_in_box():
+    def check_valid_in_box(self, row, col, num):
         return NotImplementedError
     
     def is_valid(self, row, col, num):
