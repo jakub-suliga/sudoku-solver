@@ -21,11 +21,13 @@ class Soduko_Solver:
         for i in range(self.size):
             if self.board[row][i] == num:
                 return False
+        return True
     
     def check_valid_in_colum(self, col, num):
         for i in range(self.size):
             if self.board[i][col] == num:
                 return False
+        return True
 
     def check_valid_in_box(self, row, col, num):
         start_row = row - row % 3
