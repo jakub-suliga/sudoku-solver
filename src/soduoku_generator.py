@@ -1,4 +1,5 @@
 import random
+import soduku_solver
 
 class SudokuGenerator:
     def __init__(self, size=9):
@@ -12,6 +13,7 @@ class SudokuGenerator:
         grid = [[0 for _ in range(self.size)] for _ in range(self.size)]
         self._fill_grid(grid)
         self.print_grid(grid)
+        print("\n")
         self._remove_cells(grid, self.size * self.size - level)
         return grid
     
@@ -77,5 +79,13 @@ class SudokuGenerator:
 
 if __name__ == "__main__":
     generator = SudokuGenerator()
-    sudoku = generator.generate_sudoku(level=3)  # 40 vorgegebene Zellen
+    sudoku = generator.generate_sudoku(level=30)  # 40 vorgegebene Zellen
     generator.print_grid(sudoku)
+    print("\nSudoku-Rätsel generiert!")
+    solver = soduku_solver.SudokuSolver(sudoku)
+    if solver.solve():
+        print("\nLösung:")
+        solver.print_board()
+    else:
+        print("\nKeine Lösung gefunden.")
+    
