@@ -14,19 +14,21 @@ class sodoku_generaotr:
                 if rnd == 1:
                     random_num = random.randint(1, 9)
                     while not self.is_valid(i, j, random_num, result):
-                        result[i][j] = random_num
                         random_num = random.randint(1, 9)
+                    result[i][j] = random_num
         return result
     
     def check_valid_in_row(self, row, num, result):
         for i in range(len(result)):
             if result[row][i] == num:
                 return False
+        return True
             
     def check_valid_in_colum(self, col, num, result):
         for i in range(len(result)):
             if result[i][col] == num:
                 return False
+        return True
             
     def check_valid_in_box(self, row, col, num, result):
         start_row = row - row % 3
