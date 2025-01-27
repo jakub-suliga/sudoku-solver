@@ -109,14 +109,10 @@ class SudokuGenerator:
 
 if __name__ == "__main__":
     generator = SudokuGenerator()
-    sudoku = generator.generate_sudoku(level=20)  # 30 vorgegebene Zellen
+    sudoku = generator.generate_sudoku(level=25)  # 30 vorgegebene Zellen
     print("Generiertes Sudoku-Rätsel mit eindeutiger Lösung:")
     generator.print_grid(sudoku)
     print("\nSudoku-Rätsel generiert!")
-    
-    # Optional: Lösung anzeigen (wenn Sie einen Solver integriert haben)
-    # Da der Benutzer ursprünglich 'soduku_solver' importiert hat, können Sie dies hier nutzen.
-    # Stellen Sie sicher, dass 'soduku_solver' korrekt implementiert ist.
     try:
         import soduku_solver
         solver = soduku_solver.SudokuSolver(sudoku)
