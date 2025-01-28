@@ -1,3 +1,6 @@
+from check_utils import CheckerUtils
+
+
 class SudokuSolver:
     def __init__(self, board, size=9):
         self.board = board
@@ -14,7 +17,7 @@ class SudokuSolver:
         row, col = empty
 
         for num in range(1, self.size + 1):
-            if self.is_valid(row, col, num):
+            if CheckerUtils.is_valid(row, col, num):
                 self.board[row][col] = num
                 if self.solve():
                     return True
@@ -29,30 +32,6 @@ class SudokuSolver:
                 if self.board[i][j] == 0:
                     return (i, j)
         return None
-
-    def is_valid(self, row, col, num):
-        """Überprüft, ob das Einfügen von num an Position (row, col) gültig ist."""
-        return (self._check_row(row, num) and
-                self._check_column(col, num) and
-                self._check_box(row, col, num))
-
-    def _check_row(self, row, num):
-        """Überprüft, ob num nicht bereits in der Zeile vorhanden ist."""
-        return num not in self.board[row]
-
-    def _check_column(self, col, num):
-        """Überprüft, ob num nicht bereits in der Spalte vorhanden ist."""
-        return all(self.board[i][col] != num for i in range(self.size))
-
-    def _check_box(self, row, col, num):
-        """Überprüft, ob num nicht bereits im entsprechenden 3x3-Box vorhanden ist."""
-        start_row = row - row % self.box_size
-        start_col = col - col % self.box_size
-        for i in range(self.box_size):
-            for j in range(self.box_size):
-                if self.board[start_row + i][start_col + j] == num:
-                    return False
-        return True
 
     def print_board(self):
         """Gibt das Sudoku-Raster in einem lesbaren Format aus."""
