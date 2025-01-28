@@ -1,6 +1,8 @@
 import random
 import copy
 
+from check_utils import CheckerUtils
+
 class SudokuGenerator:
     def __init__(self, size=9):
         self.size = size
@@ -26,7 +28,7 @@ class SudokuGenerator:
                     numbers = list(range(1, self.size + 1))
                     random.shuffle(numbers)
                     for num in numbers:
-                        if self._is_valid(i, j, num, grid):
+                        if CheckerUtils.is_valid(i, j, num, grid, self.size ,self.box_size):
                             grid[i][j] = num
                             if self._fill_grid(grid):
                                 return True
